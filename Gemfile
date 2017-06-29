@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'omniauth-github'
 gem 'httparty'
+gem 'haml'
+gem 'jquery-rails'
+gem 'foundation-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
