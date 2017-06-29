@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'omniauth-github'
 gem 'httparty'
-gem 'haml'
+gem 'haml', git: 'https://github.com/haml/haml'
 gem 'jquery-rails'
 gem 'foundation-rails'
 
