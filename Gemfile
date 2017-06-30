@@ -36,6 +36,7 @@ gem 'httparty'
 gem 'haml', git: 'https://github.com/haml/haml'
 gem 'jquery-rails'
 gem 'foundation-rails'
+gem "github_api"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

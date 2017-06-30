@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
   def create
     auth_hash = request.env['omniauth.auth']
+    binding.pry
     @authorization = Authorization.find_by provider: auth_hash["provider"], uid: auth_hash["uid"]
     if @authorization
       session[:current_user] = @authorization
@@ -24,7 +25,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:current_user] = nil
-    render :text => "You've logged out!"
+    flash[:notice] = "Logged Out"
+    redirect_to '/'
   end
 
   protected
