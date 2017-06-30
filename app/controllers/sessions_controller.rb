@@ -1,28 +1,30 @@
 class SessionsController < ApplicationController
   def new
-
   end
   def create
-    # @user = User.find_or_create_from_auth_hash(auth_hash)
-    # self.current_user = @user
-    # redirect_to '/'
     auth_hash = request.env['omniauth.auth']
-
-    binding.pry
-    @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
+    @authorization = Authorization.find_by provider: auth_hash["provider"], uid: auth_hash["uid"]
     if @authorization
-      render :text => "Welcome back #{@authorization.user.name}! You have already signed up."
+      session[:current_user] = @authorization
+      flash[:notice] = "Welcome Back #{ session[:current_user].name }!"
+      redirect_to '/'
     else
-      user = User.new :name => auth_hash["info"]["nickname"], :email => auth_hash["info"]["email"], :token => auth_hash["info"]["credentials"]["token"]
+      user = User.new :name => auth_hash["info"]["nickname"], :email => auth_hash["info"]["email"], :token => auth_hash["credentials"]["token"]
       user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+      session[:current_user] = user
       user.save
-
-      render :text => "Hi #{user.name}! You've signed up."
+      flash[:notice] = "Welcome Aboard #{ session[:current_user].name }!"
+      redirect_to '/'
     end
   end
 
   def failure
 
+  end
+
+  def destroy
+    session[:current_user] = nil
+    render :text => "You've logged out!"
   end
 
   protected
