@@ -7,3 +7,13 @@
         %li
           = image_tag org["avatar_url"]
           = link_to org["login"], org["url"]
+.row
+  .small-12.columns
+    List of Pull Requests for user
+    %ul
+      - @pull_requests["items"].each do |pr|
+        %li
+          = "Title: #{ pr["title"] }"
+          = "Description: #{ pr["body"].html_safe }"
+
+
