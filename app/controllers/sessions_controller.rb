@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   end
   def create
     auth_hash = request.env['omniauth.auth']
-    binding.pry
     @authorization = Authorization.find_by provider: auth_hash["provider"], uid: auth_hash["uid"]
     if @authorization
       session[:current_user] = @authorization

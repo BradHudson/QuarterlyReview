@@ -11,9 +11,9 @@
   .small-12.columns
     List of Pull Requests for user
     %ul
-      - @pull_requests["items"].each do |pr|
+      - @pull_requests["items"]&.each_with_index do |pr,i|
         %li
-          = "Title: #{ pr["title"] }"
+          = "#{ i + 1 }: #{ pr["title"] }"
           = "Description: #{ pr["body"].html_safe }"
 
 
