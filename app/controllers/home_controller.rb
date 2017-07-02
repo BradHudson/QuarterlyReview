@@ -34,6 +34,12 @@ class HomeController < ApplicationController
 
   private
 
+  def auth_login
+    if session[:current_user].nil?
+      redirect_to 'auth/github'
+    end
+  end
+
   def headers
     { "Authorization" => "token #{ @token }", "User-Agent" => "Awesome-Octocat-App"}
   end
