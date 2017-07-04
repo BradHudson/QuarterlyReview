@@ -9,11 +9,31 @@
           = link_to org["login"], org["url"]
 .row
   .small-12.columns
-    List of Pull Requests for user
+    %h1
+      List of Pull Requests for user
     %ul
       - @pull_requests["items"]&.each_with_index do |pr,i|
         %li
           = "#{ i + 1 }: #{ pr["title"] }"
           = "Description: #{ pr["body"].html_safe }"
-
+.row
+  .small-12.columns
+    %h1
+      Talk About Yourself.
+    %ul
+      %li
+        Candor
+        We communicate with clarity, honesty, and respect in all relationships.
+      %li
+        Disciplined Freedom
+        We give leaders within the organization freedom to run their own business and reward and hold them accountable for the success of that business.
+      %li
+        Passion
+        We are passionate about helping our customers achieve their goals, assisting the global community in enhancing the lives of all its citizens, and creating a work environment where people of different backgrounds and perspectives can succeed based upon the content of their character and the quality of their performance.
+      %li
+        Agility
+        To remain an industry leader, we must learn and rapidly translate that learning into action. We must also develop our employees and teach them to use critical thinking skills in all decision making. This is the only competitive advantage.
+      %li
+        Easy to do business with
+        We treat every situation with a positive "can do" attitude. When faced with challenges, we respond constructively to bring about solutions that exceed expectations.
 
