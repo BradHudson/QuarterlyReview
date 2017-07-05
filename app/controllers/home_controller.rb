@@ -35,6 +35,7 @@ class HomeController < ApplicationController
   private
 
   def auth_login
+    #check if the user isnt set, redirect to login
     if session[:current_user].nil?
       redirect_to 'auth/github'
     end
